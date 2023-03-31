@@ -1,4 +1,5 @@
 let ballsource = document.querySelector('.ball');
+// var container = document.getElementById('#container');
 
 window.addEventListener('load', () =>{
     ballsource.style.position = 'absolute';
@@ -7,21 +8,81 @@ window.addEventListener('load', () =>{
 });
 
 window.addEventListener('keypress', (event) => {
-    var key_code = event.which || event.keyCode;;
+    var key_code = event.keyCode;;
  switch (key_code) {
     case 97:
-        ballsource.style.left = parseInt(ballsource.style.left) -5 + 'px';
+       {
+        
+        myLeft();
+
         break;
+       }
     case 119:
-        ballsource.style.top = parseInt(ballsource.style.top) -5 + 'px';
+       {
+      
+      myTop();
+     
         break;
+       }
     case 100:
-        ballsource.style.left = parseInt(ballsource.style.left) +5 + 'px';
+        {
+        myRight();
+        break;    
+        }
+        
+    case 115:
+       {
+        
+        myBottom();
         break;
-    case 120:
-        ballsource.style.top = parseInt(ballsource.style.top) + 5 + 'px';
-        break;
+       }
     default:
-        alert("Only A,D,W,X allowed!");
+        window.alert("Only a d w s allowed");
     }
 });
+let x=0;
+let y=0;
+let speed = 10;
+let windowWidth = window.innerWidth;
+let windowHeight = window.innerHeight;
+
+function myLeft(){
+    if(x > 0){
+        x = x - speed;
+        ballsource.style.left= x + 'px';
+    }
+
+}
+
+function myTop(){
+       if(y > 0 ){
+        y -= speed;
+        ballsource.style.top = y + 'px';
+    }
+
+
+}
+
+
+function myRight(){
+  
+    if(x + 100 < windowWidth){
+        x += speed;
+        console.log(x);
+        ballsource.style.left= x + 'px';
+    }
+
+
+}
+
+function myBottom(){
+  
+    if(y + 100 < windowHeight){
+        y += speed;
+        console.log(y);
+        ballsource.style.top = y + 'px';
+    }
+
+}
+
+
